@@ -7,6 +7,10 @@
 
 #include "config.h"
 #include "transactions.h"
+#include "data.h"
+
+#define TPCC_TABLENUM  9
+#define SMALLBANK_TABLENUM 3
 
 // number of warehouses
 int configWhseCount;
@@ -62,8 +66,11 @@ int MAX_BALANCE;
 
 void InitConfig(void)
 {
+	benchmarkType=TPCC;
+	TABLENUM=TPCC_TABLENUM;
+
     //transPerTerminal
-    transactionsPerTerminal=40000;
+    transactionsPerTerminal=10000;
 
     //we didn't build index on tables, so range query in order-status and delivery transactions are very slow,
     //there we set 'orderStatusWeightValue' and 'deliveryWeightValue' to '0', so we actually didn't implement
@@ -75,11 +82,11 @@ void InitConfig(void)
 
     limPerMin_Terminal=0;
 
-    configWhseCount=5;
+    configWhseCount=1;
     configDistPerWhse=10;
-    configCustPerDist=3000;
+    configCustPerDist=300;
     MaxBucketSize=1000000;
-    configUniqueItems=100000;
+    configUniqueItems=1000;
 
     configCommitCount=60;
 
@@ -87,7 +94,7 @@ void InitConfig(void)
 
     MaxDataLockNum=80;
      //smallbank
-    scaleFactor=1;
+    scaleFactor=0.1;
     configNumAccounts=(int)(scaleFactor*1000000);
     configAccountsPerBucket=10000;
     

@@ -297,3 +297,46 @@ void TransSnapshot(int nid)
     // transfer the snapshot just one time.
     tdata->trans_snap[nid] = true;
 }
+
+void PrintTable(int table_id)
+{
+
+	int i,j,k;
+	THash HashTable;
+	Record* rd;
+	char filename[10];
+
+	FILE* fp;
+
+	memset(filename,'\0',sizeof(filename));
+
+	filename[0]=(char)(table_id+'0');
+        filename[1]=(char)('+');
+        filename[2]=(char)(nodeid+'0');
+	strcat(filename, ".txt");
+
+	if((fp=fopen(filename,"w"))==NULL)
+	{
+		printf("file open error\n");
+		exit(-1);
+	}
+
+	printf("table_id=%d, %d\n", table_id, TABLENUM);
+	i=table_id;
+
+	HashTable=TableList[0];
+
+	printf("begin printf\n");
+	//printf("num=%d\n", RecordNum[i]);
+	/*
+	for(j=0;j<RecordNum[i];j++)
+	{
+		rd=&HashTable[j];
+		fprintf(fp,"%d: %ld",j,rd->tupleid);
+		for(k=0;k<VERSIONMAX;k++)
+			fprintf(fp,"(%ld %ld %ld %d)",rd->VersionList[k].tid,rd->VersionList[k].committime,rd->VersionList[k].value,rd->VersionList[k].deleted);
+		fprintf(fp,"\n");
+	}
+	printf("\n");
+	*/
+}

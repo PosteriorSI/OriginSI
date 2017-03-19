@@ -23,6 +23,8 @@
 //smallbank extension
 #define EXTENSIONLIMIT extension_limit
 
+BENCHMARK benchmarkType;
+
 int GetMaxOid(int table_id, int w_id, int d_id, int c_id);
 
 int GetMinOid(int table_id, int w_id, int d_id);
@@ -990,7 +992,7 @@ int newOrderTransaction(int w_id, int d_id, int c_id, int o_ol_cnt, int o_all_lo
         if(d_next_o_id < configCustPerDist)
         {
             printf("d_next_o_id=%d, dist_value=%ld, dist_id=%ld\n",d_next_o_id, dist_value, dist_id);
-            //PrintTable(District_ID);
+            PrintTable(District_ID);
             exit(-1);
         }
 

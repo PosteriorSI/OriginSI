@@ -241,6 +241,8 @@ void InitClient(int nid, int threadid)
     mastersock_addr.sin_family = AF_INET;
     mastersock_addr.sin_port = htons(port);
 
+    printf("nid=%d, %s\n", nid, node_ip[nid]);
+
     if (connect(slave_sockfd, (struct sockaddr *)&mastersock_addr, sizeof(mastersock_addr)) < 0)
     {
         printf("client connect error!\n");

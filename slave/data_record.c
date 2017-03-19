@@ -151,7 +151,7 @@ void AbortDataRecord()
         conn=connect_socket[nid][local_index];
 
         // send data-insert to node "nid".
-        *(sbuffer) = cmd_commit;
+        *(sbuffer) = cmd_abort;
 
         int num = 1;
         Send(conn, sbuffer, num);
