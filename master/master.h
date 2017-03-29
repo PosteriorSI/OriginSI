@@ -7,7 +7,7 @@
 #define MSEND_BUFFER_MAXSIZE 1000
 #define MRECV_BUFFER_MAXSIZE 8
 
-#define LINEMAX 20
+#define LINEMAX 100
 
 #define LISTEN_QUEUE 500
 
@@ -24,6 +24,12 @@ typedef struct master_arg
    int index;
    int conn;
 } master_arg;
+
+typedef enum BENCHMARK
+{
+    TPCC,
+    SMALLBANK
+} BENCHMARK;
 
 extern int oneNodeWeight;
 extern int twoNodeWeight;
